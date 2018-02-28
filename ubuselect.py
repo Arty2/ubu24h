@@ -17,12 +17,12 @@ with open('ubuscrape_sample.csv', 'r', encoding='utf-8') as csvfile:
 	films = csv.DictReader(csvfile)
 	films = list(films)
 
-films_duration_max = 60*60*24
+films_duration_max = 60*60*24 # maximum duration in seconds, 24 hours
+films_duration_slack = 2*60; # min and max slack in seconds
 films_duration_total = 0
 films_size_total = 0
 films_selected = []
-# what time do the films screen, in seconds
-film_film_screening_offset = 60*60*20
+film_film_screening_offset = 60*60*20 # what time do the films screen, in seconds
 
 film_screening = time.strftime("%H:%M", time.gmtime(films_duration_total + film_film_screening_offset))
 
@@ -30,23 +30,23 @@ while True:
 	film_random = random.choice(films)
 	# print(film_random)
 	film_duration = int(film_random['film_duration'])
-	if films_duration_total+film_duration < films_duration_max:
-		if film_duration > 0 and film_duration < 20*60:
-			output = film_screening + ' | ' + film_random['film_creator']
-			output += ' — ' + film_random['film_title'] if film_random['film_title'] else ''
-			output += ', '
-			output += time.strftime('%M', time.gmtime(film_duration)).lstrip('0') + '′' if film_duration > 60 else str(film_duration) + '′′'
-			# remove multiple spaces
-			output = re.sub(' +', ' ', output)
-			print(output)
+	if films_duration_total < films_duration_max - films_duration_slack:
+		if film_duration > 0 and film_duration < 20*60: # limit max duration to 20 minutes
+			if films_duration_total+film_duration < films_duration_max + films_duration_slack: # check whether the new total duration is within the given slack
+				output = film_screening + ' | ' + film_random['film_creator']
+				output += ' — ' + film_random['film_title'] if film_random['film_title'] else ''
+				output += ', '
+				output += time.strftime('%M', time.gmtime(film_duration)).lstrip('0') + '′' if film_duration > 60 else str(film_duration) + '′′'
+				output = re.sub(' +', ' ', output) # remove multiple spaces
+				print(output)
 
-			film_screening = time.strftime("%H:%M", time.gmtime(films_duration_total + film_film_screening_offset))
+				film_screening = time.strftime("%H:%M", time.gmtime(films_duration_total + film_film_screening_offset))
 
 
-			films_duration_total += film_duration
-			films_size_total += int(film_random['film_filesize'])
-			films_selected.append(film_random)
-			films.remove(film_random)
+				films_duration_total += film_duration
+				films_size_total += int(film_random['film_filesize'])
+				films_selected.append(film_random)
+				films.remove(film_random)
 	else:
 		break
 
