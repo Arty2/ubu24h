@@ -1,5 +1,5 @@
-## heracl.es/ubuweb
-## 2018-01-20
+## heracl.es/ubu24h
+## 2018-02
 
 import requests, time, subprocess, csv, datetime
 from bs4 import BeautifulSoup
@@ -41,8 +41,8 @@ def ubu_scrape(base = 'http://www.ubu.com/film/', links_number = 10, link_start 
 
 
 	# iterate artist links and write to .csv
-	with open('ubuscrape.csv','w', newline='', encoding='utf-8') as resultFile:
-		wr = csv.writer(resultFile, dialect='excel')
+	with open('ubuscrape.csv','w', newline='', encoding='utf-8') as csvoutput:
+		wr = csv.writer(csvoutput, dialect='excel')
 		wr.writerow(['film_index','film_creator','film_title','film_duration','film_duration_human','film_filesize','film_filesize_human','film_filename','film_vimeo','film_file','film_page_url'])
 		for artist_link in links_total:
 			artist_page_url = 'http://www.ubu.com/film/'+ artist_link.get('href')[2:]
@@ -113,7 +113,7 @@ def ubu_film_scrape(film_soup,wr,film_page_url):
 	
 	# film_descr = film_soup.find(id='ubudesc').text
 
-	wr.writerow([film_index,film_creator,film_title,film_duration,film_duration_human,film_filesize,film_filesize_human,film_filename,film_vimeo,film_file,film_page_url])
+	wr.writerow([film_index,film_creator,film_title,film_duration,film_duration_human,film_filesize,film_filesize_human,film_filename,film_vimeo,film_url,film_page_url])
 	film_index +=1
 	# sleep for a bit to cutdown on usage
 	time.sleep(1)
