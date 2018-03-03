@@ -41,7 +41,7 @@ def ubu_scrape(base = 'http://www.ubu.com/film/', links_number = 10, link_start 
 
 
 	# iterate artist links and write to .csv
-	with open('ubuscrape.csv','w', newline='', encoding='utf-8') as csvoutput:
+	with open('./output/ubuscrape.csv','w', newline='', encoding='utf-8') as csvoutput:
 		wr = csv.writer(csvoutput, dialect='excel')
 		wr.writerow(['film_index','film_creator','film_title','film_duration','film_duration_human','film_filesize','film_filesize_human','film_filename','film_vimeo','film_file','film_page_url'])
 		for artist_link in links_total:

@@ -13,11 +13,9 @@ def sizeof_fmt(num, suffix='B'):
 	return "%.1f%s%s" % (num, ' Y', suffix)
 
 # outputs a list of films
-with open('ubucurate.csv', 'r', encoding='utf-8') as csvinput:
+with open('./output/ubucurate.csv', 'r', encoding='utf-8') as csvinput:
 	films = csv.DictReader(csvinput)
 	films = list(films)
-
-
 
 # print('TOTAL FILMS: ' + str(len(films_selected)))
 # print('TOTAL DURATION: ' + str(datetime.timedelta(seconds=films_duration_total)))
@@ -28,7 +26,7 @@ with open('ubucurate.csv', 'r', encoding='utf-8') as csvinput:
 n = 1
 for film in films:
 	print(film)
-	filename = str(format(n, '03')) + '_' + film['film_filename']
+	filename = str(format(n, '04')) + '_' + film['film_screening'].replace(':', '') + '_' + film['film_filename']
 	if film['film_vimeo']:
 		print('DOWNLOADING FROM VIMEO')
 		command = 'youtube-dl ' + film['film_vimeo'] + ' -o /videos/' + filename
