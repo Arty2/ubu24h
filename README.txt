@@ -29,20 +29,20 @@ Ubu24h is a collection of three scripts, built to be used sequentialy with the p
 ### … in general
 
 - The efficiency and style of the code.
-- The inline comments that explain how it works
+- The inline comments that explain how it works.
 - …
 
 ### … in *ubuscrape.py*
 
+- Hash the scraped entries or check against the video file, to ensure films appear once.
 - Strip HTML comments to include hidden Creators as well.
 
 ### … in *ubucurate.py*
 
-
 ### … in *uburip.py*
 
 - Display progress of download, current index and running time.
-- Warn and request confirmation if files exist in /videos/
+- Warn and request confirmation if files exist in `/videos/`.
 - Continue from the last file existing, or prompt for index.
 
 
@@ -52,6 +52,8 @@ Ubu24h is a collection of three scripts, built to be used sequentialy with the p
 	+ ...
 - Several videos cannot be probed for duration (or it times out), therefore are returned with 0 duration and ignored by *ubucurate.py*.
 - Some Creator (see Artist) and Film names cannot be scraped, because if inconsistent HTML.
+- Some films may be scraped twice because they are references from multiple points.
+- Partial HTML code in some scraped entries.
 
 
 ## Licence
