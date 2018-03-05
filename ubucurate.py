@@ -74,18 +74,18 @@ with open('./output/ubucurate.csv','w', newline='', encoding='utf-8') as csvoutp
 
 					# output the day number, if it hasn‘t been already
 					if int(time.strftime("%d", time.gmtime(films_duration_total + film_screening_offset))) > film_screening_days:
-						output += '<br>\r\n<mark>DAY ' + str(film_screening_days+1)  +'</mark><br>\r\n'
+						output += '<br>\r\n<mark style="background-color:#ff0">DAY ' + str(film_screening_days+1)  +'</mark><br>\r\n'
 						film_screening_days += 1
 
 					output += film_screening + ' | '
 					if film_random['film_creator']:
 						output += film_random['film_creator']
 					else: # mark when the creator is missing
-						output += '<mark>Creator Missing</mark>'
+						output += '<mark style="background-color:#ff0">Creator Missing</mark>'
 					if film_random['film_title']:
 						output += ' — <em>' + film_random['film_title'] + '</em>, '
 					else: # if title doesn’t exist, then use the filename, try to clean it up
-						output += ' — <mark><em>' + film_random['film_filename']\
+						output += ' — <mark style="background-color:#ff0"><em>' + film_random['film_filename']\
 						.replace('-', ' ')\
 						.replace('_', ' ')\
 						.replace('.iphone', '')\
