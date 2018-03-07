@@ -34,25 +34,32 @@ Ubu24h is a collection of three scripts, built to be used sequentialy with the p
 
 ### … in *ubuscrape.py*
 
-- Hash the scraped entries or check against the video file, to ensure films appear once.
+- Warn and request confirmation if scrape file exist in `/output/`.
+- Don’t fail on errors and log them.
+- Display progress of scrape in a better way.
+- Hash (or check for filename) the scraped entries or check against the video file, to ensure films appear once (there are duplicate 3-4 cases).
 - Strip HTML comments to include hidden Creators as well.
+- Attempt to fix broken UTF8 (most likely via [ftfy](https://github.com/LuminosoInsight/python-ftfy))
 
 ### … in *ubucurate.py*
+
+- Warn and request confirmation if curation files exist in `/output/`.
 
 ### … in *uburip.py*
 
 - Display progress of download, current index and running time.
 - Warn and request confirmation if files exist in `/videos/`.
 - Continue from the last file existing, or prompt for index.
+- Verify & report, which videos did not download? Ignore files that have .temp .part or .ytdl in their extention
 
 
 ## Known Issues
 
 - The following pages cause *ubuscrape.py* to halt:
 	+ ...
-- Several videos cannot be probed for duration (or it times out), therefore are returned with 0 duration and ignored by *ubucurate.py*.
-- Some Creator (see Artist) and Film names cannot be scraped, because if inconsistent HTML.
-- Some films may be scraped twice because they are references from multiple points.
+- Several videos cannot be probed for duration (or the method times out), therefore are returned with 0 duration and ignored by *ubucurate.py*.
+- Some Creator (see Artist) and Film names cannot be scraped, because of inconsistent HTML. Should be difficult to fix.
+- Some films (3-4 cases) may be scraped twice because they are references from multiple points. 
 - Partial HTML code in some scraped entries.
 
 
