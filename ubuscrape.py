@@ -119,4 +119,5 @@ def ubu_film_scrape(film_soup,wr,film_page_url):
 	time.sleep(1)
 
 
-ubu_scrape(links_number = None, link_start = 620)
+link_start = int(input("What film index to start from?") or 1)
+ubu_scrape(links_number = None, link_start = 0)
