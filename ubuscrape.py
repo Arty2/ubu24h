@@ -105,7 +105,7 @@ def ubu_film_scrape(film_soup,wr,film_page_url):
 		return
 	film_filesize_human = sizeof_fmt(int(film_filesize))
 	film_duration = int(float(get_duration(film_file)))
-	film_duration_human = str(datetime.timedelta(seconds=film_duration))
+	film_duration_human = str(datetime.timedelta(seconds=film_duration)) # human readable duration in hours
 	film_filename = film_file[film_file.rfind("/")+1:]
 	film_vimeo = film_soup.find('iframe').get('src').replace('?transparent=0','') if film_soup.find('iframe') else ''
 	# film_filesize.close()

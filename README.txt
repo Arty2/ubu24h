@@ -34,9 +34,12 @@ Ubu24h is a collection of three scripts, built to be used sequentialy with the p
 
 ### … in *ubuscrape.py*
 
+- Confirm wether *film_duration_human* is logged correctly.
 - Warn and request confirmation if scrape file exist in `/output/`.
 - Don’t fail on errors and log them.
 - Display progress of scrape in a better way.
+- Some Creator (see Artist) and Film names cannot be scraped, because of inconsistent HTML. Check with [WTFcsv](https://databasic.io/en/wtfcsv)
+- Films are not scraped at all if Vimeo link is not found; needs a better way to check if there’s a video link available in the page.
 - Hash (or check for filename) the scraped entries or check against the video file, to ensure films appear once (there are duplicate 3-4 cases).
 - Strip HTML comments to include hidden Creators as well.
 - Attempt to fix broken UTF8 (most likely via [ftfy](https://github.com/LuminosoInsight/python-ftfy))
@@ -58,7 +61,6 @@ Ubu24h is a collection of three scripts, built to be used sequentialy with the p
 - The following pages cause *ubuscrape.py* to halt:
 	+ ...
 - Several videos cannot be probed for duration (or the method times out), therefore are returned with 0 duration and ignored by *ubucurate.py*.
-- Some Creator (see Artist) and Film names cannot be scraped, because of inconsistent HTML. Should be difficult to fix.
 - Some films (3-4 cases) may be scraped twice because they are references from multiple points. 
 - Partial HTML code in some scraped entries.
 
