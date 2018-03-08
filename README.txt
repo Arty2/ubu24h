@@ -43,6 +43,7 @@ Ubu24h is a collection of three scripts, built to be used sequentialy with the p
 - Hash (or check for filename) the scraped entries or check against the video file, to ensure films appear once (there are duplicate 3-4 cases).
 - Strip HTML comments to include hidden Creators as well.
 - Attempt to fix broken UTF8 (most likely via [ftfy](https://github.com/LuminosoInsight/python-ftfy))
+- Normalize filenames (eg URL decode etc)
 
 ### … in *ubucurate.py*
 
@@ -53,7 +54,6 @@ Ubu24h is a collection of three scripts, built to be used sequentialy with the p
 - Display progress of download, current index and running time.
 - Warn and request confirmation if files exist in `/videos/`.
 - Continue from the last file existing, or prompt for index.
-- Verify & report, which videos did not download? Ignore files that have .temp .part or .ytdl in their extention
 
 
 ## Known Issues
