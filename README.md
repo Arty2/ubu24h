@@ -1,4 +1,6 @@
-# ubu24h
+# [/ubu24h](https://heracl.es/ubu24h/)
+
+Algorithmic selection for the [24h Ubu](http://www.sgt.gr/eng/SPG2095/) (2018) screening at Onassis Cultural Centre–Athens.
 
 Ubu24h is a collection of three scripts, built to be used sequentialy with the purpose to:
 
